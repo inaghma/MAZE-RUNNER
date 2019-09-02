@@ -1,0 +1,11 @@
+E:\object_find\object_find\bin\Release\object_find.exe.config
+E:\object_find\object_find\bin\Release\object_find.exe
+E:\object_find\object_find\bin\Release\object_find.pdb
+E:\object_find\object_find\bin\Release\object_find.xml
+E:\object_find\object_find\obj\Release\object_find.vbprojResolveAssemblyReference.cache
+E:\object_find\object_find\obj\Release\object_find.find_stuff.resources
+E:\object_find\object_find\obj\Release\object_find.Resources.resources
+E:\object_find\object_find\obj\Release\object_find.vbproj.GenerateResource.Cache
+E:\object_find\object_find\obj\Release\object_find.exe
+E:\object_find\object_find\obj\Release\object_find.xml
+E:\object_find\object_find\obj\Release\object_find.pdb

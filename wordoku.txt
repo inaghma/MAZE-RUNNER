@@ -1,0 +1,541 @@
+Public Class Form1
+    Class wordoku_textbox
+        Inherits TextBox
+        Protected Overrides Sub OnKeyPress(ByVal e As System.Windows.Forms.KeyPressEventArgs)
+            ' Operate only on lowercase characters, so that  Backspace, Delete, Home, and others 
+            ' continue to work without interference.
+
+            If Char.IsLower(e.KeyChar) Then
+
+                'Convert to uppercase, and put at the caret position in the TextBox.
+                e.KeyChar = Char.ToUpper(e.KeyChar)
+
+                e.Handled = True
+            End If
+            If Char.IsLetter(e.KeyChar) Or e.KeyChar = " " Or e.KeyChar = ControlChars.Back Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+            If e.KeyChar = " " Or e.KeyChar = "0" Then
+                e.KeyChar = ControlChars.Back
+            End If
+        End Sub
+
+
+    End Class
+    Dim cell(0 To 8, 0 To 8) As wordoku_textbox
+    Dim grid(0 To 8, 0 To 8) As String
+
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim xxtra As Integer
+        Dim yxtra As Integer
+
+        For x As Integer = 0 To 8
+            For y As Integer = 0 To 8
+
+                cell(x, y) = New wordoku_textbox
+                cell(x, y).Text = ""
+                cell(x, y).Multiline = True
+                cell(x, y).Font = New Font("Comic Sans MS", "20")
+                cell(x, y).Width = 50
+                cell(x, y).Height = 50
+                cell(x, y).MaxLength = 1
+                cell(x, y).TextAlign = HorizontalAlignment.Center
+                cell(x, y).BorderStyle = BorderStyle.Fixed3D
+                xxtra = 0
+                yxtra = 0
+
+
+                If x > 2 Then
+                    xxtra = 20
+                End If
+                If x > 5 Then
+                    xxtra = 40
+                End If
+                If y > 2 Then
+                    yxtra = 20
+                End If
+                If y > 5 Then
+                    yxtra = 40
+                End If
+                If y = 0 Then
+                    If x = 1 Then
+                        cell(x, y).Text = "K"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 3 Then
+                        cell(x, y).Text = "W"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 6 Then
+                        cell(x, y).Text = "T"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 8 Then
+                        cell(x, y).Text = "E"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 1 Then
+                    If x = 1 Then
+                        cell(x, y).Text = "T"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 2 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 3 Then
+                        cell(x, y).Text = "O"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 5 Then
+                        cell(x, y).Text = "E"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 7 Then
+                        cell(x, y).Text = "K"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 2 Then
+                    If x = 0 Then
+                        cell(x, y).Text = "O"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 1 Then
+                        cell(x, y).Text = "W"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 2 Then
+                        cell(x, y).Text = "E"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 7 Then
+                        cell(x, y).Text = "L"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 3 Then
+                    If x = 3 Then
+                        cell(x, y).Text = "E"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 4 Then
+                        cell(x, y).Text = "B"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 6 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 7 Then
+                        cell(x, y).Text = "W"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 4 Then
+                    If x = 0 Then
+                        cell(x, y).Text = "W"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 1 Then
+                        cell(x, y).Text = "B"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 3 Then
+                        cell(x, y).Text = "T"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 5 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 5 Then
+                    If x = 1 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 3 Then
+                        cell(x, y).Text = "K"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 6 Then
+                        cell(x, y).Text = "L"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 7 Then
+                        cell(x, y).Text = "T"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 8 Then
+                        cell(x, y).Text = "B"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 6 Then
+                    If x = 0 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 2 Then
+                        cell(x, y).Text = "K"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 5 Then
+                        cell(x, y).Text = "B"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 6 Then
+                        cell(x, y).Text = "O"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 7 Then
+                    If x = 1 Then
+                        cell(x, y).Text = "O"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 4 Then
+                        cell(x, y).Text = "T"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 8 Then
+                        cell(x, y).Text = "L"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                If y = 8 Then
+                    If x = 2 Then
+                        cell(x, y).Text = "L"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 3 Then
+                        cell(x, y).Text = "R"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 4 Then
+                        cell(x, y).Text = "E"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 6 Then
+                        cell(x, y).Text = "W"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 7 Then
+                        cell(x, y).Text = "B"
+                        cell(x, y).Enabled = False
+                    End If
+                    If x = 8 Then
+                        cell(x, y).Text = "K"
+                        cell(x, y).Enabled = False
+                    End If
+                End If
+                cell(x, y).Location = New Point(450 + x * 50 + xxtra, 100 + y * 50 + yxtra)
+                Me.Controls.Add(cell(x, y))
+
+                AddHandler cell(x, y).TextChanged, AddressOf cell_changed
+
+            Next
+        Next
+    End Sub
+
+
+    Private Sub cell_changed()
+        For x As Integer = 0 To 8
+            For y As Integer = 0 To 8
+
+                grid(x, y) = cell(x, y).Text
+                cell(x, y).ForeColor = Color.Black
+            Next
+        Next
+        For x = 0 To 8
+            For y = 0 To 8
+                If Not {"S", "T", "E", "L", "W", "O", "R", "K", "B"}.Contains(cell(x, y).Text) Then
+                    cell(x, y).Text = ""
+                End If
+                If check_rows(x, y) Then
+                    If check_columns(x, y) Then
+                        If Not check_box(x, y) Then
+                            cell(x, y).ForeColor = Color.Red
+                        End If
+                    Else
+                        cell(x, y).ForeColor = Color.Red
+                    End If
+                Else
+                    cell(x, y).ForeColor = Color.Red
+                End If
+            Next
+        Next
+
+    End Sub
+
+    Function check_rows(ByVal xsender, ByVal ysender) As Boolean
+        Dim noclash As Boolean = True
+        For x As Integer = 0 To 8
+            If grid(x, ysender) <> "" Then
+                If x <> xsender Then
+                    If grid(x, ysender) = grid(xsender, ysender) Then
+                        noclash = False
+                    End If
+                End If
+            End If
+        Next
+        Return noclash
+    End Function
+
+    Function check_columns(ByVal xsender, ByVal ysender) As Boolean
+        Dim noclash As Boolean = True
+        For y As Integer = 0 To 8
+            If grid(xsender, y) <> "" Then
+                If y <> ysender Then
+                    If grid(xsender, y) = grid(xsender, ysender) Then
+                        noclash = False
+
+                    End If
+                End If
+            End If
+        Next
+        Return noclash
+    End Function
+
+    Function check_box(ByVal xsender, ByVal ysender) As Boolean
+        Dim noclash As Boolean = True
+        Dim xstart As Integer
+        Dim ystart As Integer
+        If xsender <3 Then
+            xstart= 0
+        ElseIf xsender < 6 Then
+            xstart = 3
+        Else
+            xstart = 6
+        End If
+        If ysender < 3 Then
+            ystart = 0
+        ElseIf ysender < 6 Then
+            ystart = 3
+        Else
+            ystart = 6
+        End If
+        For y As Integer = ystart To (ystart + 2)
+            For x As Integer = xstart To (xstart + 2)
+                If grid(x, y) <> "" Then
+                    If Not (x = xsender And y = ysender) Then
+                        If grid(x, y) = grid(xsender, ysender) Then
+                            noclash = False
+                        End If
+                    End If
+                End If
+            Next
+        Next
+        Return noclash
+    End Function
+
+    Private Sub ButtonClear_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonClear.Click
+        Dim result As MsgBoxResult = MessageBox.Show("Are you sure you want to clear the puzzle??", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = vbYes Then
+            For x As Integer = 0 To 8
+                For y As Integer = 0 To 8
+                    cell(x, y).Text = ""
+                    If y = 0 Then
+                        If x = 1 Then
+                            cell(x, y).Text = "K"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 3 Then
+                            cell(x, y).Text = "W"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 6 Then
+                            cell(x, y).Text = "T"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 8 Then
+                            cell(x, y).Text = "E"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 1 Then
+                        If x = 1 Then
+                            cell(x, y).Text = "T"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 2 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 3 Then
+                            cell(x, y).Text = "O"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 5 Then
+                            cell(x, y).Text = "E"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 7 Then
+                            cell(x, y).Text = "K"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 2 Then
+                        If x = 0 Then
+                            cell(x, y).Text = "O"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 1 Then
+                            cell(x, y).Text = "W"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 2 Then
+                            cell(x, y).Text = "E"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 7 Then
+                            cell(x, y).Text = "L"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 3 Then
+                        If x = 3 Then
+                            cell(x, y).Text = "E"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 4 Then
+                            cell(x, y).Text = "B"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 6 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 7 Then
+                            cell(x, y).Text = "W"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 4 Then
+                        If x = 0 Then
+                            cell(x, y).Text = "W"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 1 Then
+                            cell(x, y).Text = "B"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 3 Then
+                            cell(x, y).Text = "T"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 5 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 5 Then
+                        If x = 1 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 3 Then
+                            cell(x, y).Text = "K"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 6 Then
+                            cell(x, y).Text = "L"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 7 Then
+                            cell(x, y).Text = "T"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 8 Then
+                            cell(x, y).Text = "B"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 6 Then
+                        If x = 0 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 2 Then
+                            cell(x, y).Text = "K"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 5 Then
+                            cell(x, y).Text = "B"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 6 Then
+                            cell(x, y).Text = "O"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 7 Then
+                        If x = 1 Then
+                            cell(x, y).Text = "O"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 4 Then
+                            cell(x, y).Text = "T"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 8 Then
+                            cell(x, y).Text = "L"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                    If y = 8 Then
+                        If x = 2 Then
+                            cell(x, y).Text = "L"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 3 Then
+                            cell(x, y).Text = "R"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 4 Then
+                            cell(x, y).Text = "E"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 6 Then
+                            cell(x, y).Text = "W"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 7 Then
+                            cell(x, y).Text = "B"
+                            cell(x, y).Enabled = False
+                        End If
+                        If x = 8 Then
+                            cell(x, y).Text = "K"
+                            cell(x, y).Enabled = False
+                        End If
+                    End If
+                Next
+            Next
+        End If
+    End Sub
+
+    Private Sub btnsubmit_Click(sender As Object, e As EventArgs) Handles btnsubmit.Click
+
+
+        For x As Integer = 0 To 8
+            For y As Integer = 0 To 8
+                If x = y Then
+                    cell(x, y).BackColor = Color.Azure
+                End If
+                If String.IsNullOrEmpty(cell(x, y).Text) And cell(x, y).ForeColor <> Color.Red And cell(0, 0).Text = "S" And cell(1, 1).Text = "T" And cell(2, 2).Text = "E" And cell(3, 3).Text = "E" And cell(4, 4).Text = "L" And cell(5, 5).Text = "W" And cell(6, 6).Text = "O" And cell(7, 7).Text = "R" And cell(8, 8).Text = "K" Then
+                    MessageBox.Show("Sucessfull!!")
+                    Me.Close()
+                Else
+                    MsgBox("Sorry Dude ... You didn't complete it!!!", MsgBoxStyle.OkOnly)
+                    Me.Close() 'Dude here you include the form connection
+                End If
+            Next
+        Next
+    End Sub
+
+
+End Class

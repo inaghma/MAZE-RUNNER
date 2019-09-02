@@ -1,0 +1,11 @@
+E:\Tetris\Tetris\bin\Release\Tetris.exe.config
+E:\Tetris\Tetris\bin\Release\Tetris.exe
+E:\Tetris\Tetris\bin\Release\Tetris.pdb
+E:\Tetris\Tetris\bin\Release\Tetris.xml
+E:\Tetris\Tetris\obj\Release\Tetris.vbprojResolveAssemblyReference.cache
+E:\Tetris\Tetris\obj\Release\Tetris.Resources.resources
+E:\Tetris\Tetris\obj\Release\Tetris.tetrisgame.resources
+E:\Tetris\Tetris\obj\Release\Tetris.vbproj.GenerateResource.Cache
+E:\Tetris\Tetris\obj\Release\Tetris.exe
+E:\Tetris\Tetris\obj\Release\Tetris.xml
+E:\Tetris\Tetris\obj\Release\Tetris.pdb

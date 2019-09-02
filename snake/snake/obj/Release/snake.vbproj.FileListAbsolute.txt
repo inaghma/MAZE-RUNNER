@@ -1,0 +1,10 @@
+E:\snake\snake\bin\Release\snake.exe.config
+E:\snake\snake\bin\Release\snake.exe
+E:\snake\snake\bin\Release\snake.pdb
+E:\snake\snake\bin\Release\snake.xml
+E:\snake\snake\obj\Release\snake.Form1.resources
+E:\snake\snake\obj\Release\snake.Resources.resources
+E:\snake\snake\obj\Release\snake.vbproj.GenerateResource.Cache
+E:\snake\snake\obj\Release\snake.exe
+E:\snake\snake\obj\Release\snake.xml
+E:\snake\snake\obj\Release\snake.pdb

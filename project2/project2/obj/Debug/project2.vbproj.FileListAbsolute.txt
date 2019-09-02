@@ -1,0 +1,13 @@
+E:\project2\project2\bin\Debug\project2.exe.config
+E:\project2\project2\bin\Debug\project2.exe
+E:\project2\project2\bin\Debug\project2.pdb
+E:\project2\project2\bin\Debug\project2.xml
+E:\project2\project2\obj\Debug\project2.vbprojResolveAssemblyReference.cache
+E:\project2\project2\obj\Debug\project2.Resources.resources
+E:\project2\project2\obj\Debug\project2.vbproj.GenerateResource.Cache
+E:\project2\project2\obj\Debug\project2.exe
+E:\project2\project2\obj\Debug\project2.xml
+E:\project2\project2\obj\Debug\project2.pdb
+E:\project2\project2\obj\Debug\project2.Forma.resources
+E:\project2\project2\obj\Debug\project2.Form1.resources
+E:\project2\project2\obj\Debug\project2.Form2.resources

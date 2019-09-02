@@ -1,0 +1,10 @@
+E:\globalvariables\globalvariables\bin\Debug\globalvariables.exe.config
+E:\globalvariables\globalvariables\bin\Debug\globalvariables.exe
+E:\globalvariables\globalvariables\bin\Debug\globalvariables.pdb
+E:\globalvariables\globalvariables\bin\Debug\globalvariables.xml
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.Form1.resources
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.Resources.resources
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.vbproj.GenerateResource.Cache
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.exe
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.xml
+E:\globalvariables\globalvariables\obj\Debug\globalvariables.pdb
